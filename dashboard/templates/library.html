@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="section-title">
+    Your Library
+</h1>
+
+<p class="page-description">
+    Manage your music collection in one place.
+</p>
+
+<div class="cards">
+
+    <a href="/" class="card">
+        <h2>🎵 Songs</h2>
+        <p>Browse all available songs.</p>
+    </a>
+
+    <a href="/albums/" class="card">
+        <h2>💿 Albums</h2>
+        <p>Explore your music albums.</p>
+    </a>
+
+    <a href="/favorites/" class="card">
+        <h2>❤️ Favorites</h2>
+        <p>View your favorite songs.</p>
+    </a>
+
+    <a href="/playlists/" class="card">
+        <h2>📂 Playlists</h2>
+        <p>Create and manage playlists.</p>
+    </a>
+
+    <div class="card">
+        <h2>🎤 Artists</h2>
+        <p>Coming Soon</p>
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="section-title">
+    💿 Albums
+</h1>
+
+<p style="
+    color:#b3b3b3;
+    margin-bottom:35px;
+    font-size:18px;
+">
+    Browse your music collection by album.
+</p>
+
+<div class="cards">
+
+{% for album in albums %}
+
+<a
+    href="{% url 'album_detail' album.album %}"
+    class="card"
+    style="text-decoration:none;color:white;"
+>
+
+    <img
+        src="{{ album.cover_image.url }}"
+        alt="{{ album.album }}"
+    >
+
+    <h3 style="color:white;">
+        {{ album.album }}
+    </h3>
+
+    <p style="color:#b3b3b3;">
+        🎤 {{ album.artist }}
+    </p>
+
+</a>
+
+{% empty %}
+
+<div style="width:100%;text-align:center;padding:60px;">
+
+    <h2>No albums available.</h2>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

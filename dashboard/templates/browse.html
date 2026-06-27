@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="section-title">
+    🎧 Browse Music
+</h1>
+
+<p style="
+    color:#b3b3b3;
+    margin-top:10px;
+    margin-bottom:35px;
+    font-size:18px;
+">
+    Discover the latest music in your collection.
+</p>
+
+<h2 style="margin-bottom:20px;">
+    🔥 Trending Songs
+</h2>
+
+<div class="cards">
+
+{% for song in trending_songs %}
+
+    {% include "components/song_card.html" with song=song %}
+
+{% empty %}
+
+<p style="color:#b3b3b3;">
+    No trending songs available.
+</p>
+
+{% endfor %}
+
+</div>
+
+<h2 style="
+    margin-top:50px;
+    margin-bottom:20px;
+">
+    🆕 New Releases
+</h2>
+
+<div class="cards">
+
+{% for song in new_releases %}
+
+    {% include "components/song_card.html" with song=song %}
+
+{% empty %}
+
+<p style="color:#b3b3b3;">
+    No new releases available.
+</p>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

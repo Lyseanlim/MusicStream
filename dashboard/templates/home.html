@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="section-title">
+    🎵 Welcome to MusicStream
+</h1>
+
+<p style="
+    color:#b3b3b3;
+    margin-top:10px;
+    margin-bottom:35px;
+    font-size:18px;
+">
+    Discover your favorite music anytime.
+</p>
+
+{% if user.is_authenticated %}
+
+{% if recently_played %}
+
+<h2 style="margin-bottom:20px;">
+    🎧 Recently Played
+</h2>
+
+<div class="cards">
+
+{% for item in recently_played %}
+
+    {% include "components/song_card.html" with song=item.song %}
+
+{% endfor %}
+
+</div>
+
+{% endif %}
+
+{% if favorite_songs %}
+
+<h2 style="
+    margin-top:50px;
+    margin-bottom:20px;
+">
+    ❤️ Your Favorites
+</h2>
+
+<div class="cards">
+
+{% for favorite in favorite_songs %}
+
+    {% include "components/song_card.html" with song=favorite.song %}
+
+{% endfor %}
+
+</div>
+
+{% endif %}
+
+{% endif %}
+
+<h2 style="
+    margin-top:50px;
+    margin-bottom:20px;
+">
+    🔥 Recently Added
+</h2>
+
+<div class="cards">
+
+{% for song in songs %}
+
+    {% include "components/song_card.html" with song=song %}
+
+{% empty %}
+
+<p style="color:#b3b3b3;">
+    No songs available.
+</p>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

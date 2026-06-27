@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="section-title">
+    ➕ Create Playlist
+</h1>
+
+<div style="
+    max-width:500px;
+    margin-top:30px;
+    background:#1b1b1b;
+    padding:30px;
+    border-radius:16px;
+">
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <input
+            type="text"
+            name="name"
+            placeholder="Enter playlist name"
+            required
+            style="
+                width:100%;
+                padding:14px;
+                border:none;
+                border-radius:10px;
+                background:#2a2a2a;
+                color:white;
+                margin-bottom:20px;
+                font-size:16px;
+            "
+        >
+
+        <button
+            type="submit"
+            style="
+                width:100%;
+                padding:14px;
+                border:none;
+                border-radius:10px;
+                background:#fa233b;
+                color:white;
+                font-size:16px;
+                cursor:pointer;
+            "
+        >
+            Create Playlist
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

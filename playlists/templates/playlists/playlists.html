@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="section-title">
+    🎵 My Playlists
+</h1>
+
+<div style="margin-bottom:30px;">
+
+    <a
+        href="{% url 'create_playlist' %}"
+        style="
+            display:inline-block;
+            padding:12px 20px;
+            background:#fa233b;
+            color:white;
+            text-decoration:none;
+            border-radius:10px;
+            font-weight:bold;
+        "
+    >
+        + Create Playlist
+    </a>
+
+</div>
+
+<div class="cards">
+
+{% for playlist in playlists %}
+
+<a
+    href="{% url 'playlist_detail' playlist.id %}"
+    class="card"
+    style="text-decoration:none;color:white;"
+>
+
+    <h2>{{ playlist.name }}</h2>
+
+    <p>
+        {{ playlist.songs.count }} songs
+    </p>
+
+</a>
+
+{% empty %}
+
+<h2>
+    You don't have any playlists yet.
+</h2>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

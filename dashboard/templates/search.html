@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="section-title">
+    Search Music
+</h1>
+
+<p class="page-description">
+    Search by song title, artist, or album.
+</p>
+
+<form method="GET" style="margin-bottom:35px;">
+
+    <input
+        type="text"
+        name="q"
+        placeholder="Search songs, artists, albums..."
+        value="{{ query }}"
+        style="
+            width:320px;
+            padding:12px;
+            border-radius:10px;
+            border:none;
+            outline:none;
+        "
+    >
+
+    <button
+        type="submit"
+        style="
+            padding:12px 22px;
+            border:none;
+            border-radius:10px;
+            background:#fa243c;
+            color:white;
+            cursor:pointer;
+        "
+    >
+        🔍 Search
+    </button>
+
+</form>
+
+{% if songs %}
+
+<div class="cards">
+
+    {% for song in songs %}
+
+        {% include "components/song_card.html" with song=song %}
+
+    {% endfor %}
+
+</div>
+
+{% else %}
+
+<div style="text-align:center;padding:60px 0;">
+
+    <h2>
+        😔 No songs found
+    </h2>
+
+    <p style="margin-top:15px;color:#b3b3b3;">
+        Try another keyword.
+    </p>
+
+</div>
+
+{% endif %}
+
+{% endblock %}

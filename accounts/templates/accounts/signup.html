@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | MusicStream</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:linear-gradient(135deg,#000000,#1d1d1d,#2b2b2b);
+            color:white;
+        }
+
+        .card{
+            width:380px;
+            padding:40px;
+            border-radius:20px;
+            background:rgba(255,255,255,.08);
+            backdrop-filter:blur(20px);
+            box-shadow:0 10px 40px rgba(0,0,0,.4);
+        }
+
+        h1{
+            text-align:center;
+            margin-bottom:10px;
+        }
+
+        p{
+            text-align:center;
+            color:#bdbdbd;
+            margin-bottom:30px;
+        }
+
+        input{
+            width:100%;
+            padding:14px;
+            margin-bottom:15px;
+            border:none;
+            border-radius:12px;
+            background:#222;
+            color:white;
+            outline:none;
+            font-size:15px;
+        }
+
+        button{
+            width:100%;
+            padding:14px;
+            border:none;
+            border-radius:12px;
+            background:#fa233b;
+            color:white;
+            font-size:16px;
+            cursor:pointer;
+            transition:.3s;
+        }
+
+        button:hover{
+            background:#ff4f65;
+        }
+
+        .error{
+            color:#ff5b5b;
+            text-align:center;
+            margin-bottom:15px;
+        }
+
+        .bottom{
+            margin-top:20px;
+            text-align:center;
+        }
+
+        .bottom a{
+            color:#fa233b;
+            text-decoration:none;
+        }
+
+        .bottom a:hover{
+            text-decoration:underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+
+    <h1>🎵 MusicStream</h1>
+    <p>Create your account</p>
+
+    {% if error %}
+        <div class="error">
+            {{ error }}
+        </div>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <input
+            type="text"
+            name="username"
+            placeholder="Username"
+            required
+        >
+
+        <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+        >
+
+        <button type="submit">
+            Create Account
+        </button>
+    </form>
+
+    <div class="bottom">
+        Already have an account?
+        <a href="{% url 'login' %}">
+            Login
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>

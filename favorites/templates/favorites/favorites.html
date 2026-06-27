@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="section-title">
+    ❤️ Favorites
+</h1>
+
+<div class="cards">
+
+{% for favorite in favorites %}
+
+<div class="card">
+
+    <a
+        href="/song/{{ favorite.song.id }}/"
+        style="
+            text-decoration:none;
+            color:white;
+        "
+    >
+
+        <img
+            src="{{ favorite.song.cover_image.url }}"
+            alt="{{ favorite.song.title }}"
+        >
+
+        <h3 style="color:white;">
+            {{ favorite.song.title }}
+        </h3>
+
+        <p style="color:#b3b3b3;">
+            {{ favorite.song.artist }}
+        </p>
+
+    </a>
+
+    <br>
+
+    <a
+        href="{% url 'remove_favorite' favorite.song.id %}"
+        style="
+            display:inline-block;
+            padding:8px 14px;
+            background:#ff3b5c;
+            color:white;
+            text-decoration:none;
+            border-radius:8px;
+            font-size:14px;
+        "
+    >
+        💔 Remove
+    </a>
+
+</div>
+
+{% empty %}
+
+<div style="text-align:center;width:100%;padding:60px 0;">
+
+    <h2>
+        ❤️ No favorite songs yet
+    </h2>
+
+    <p style="color:#b3b3b3;margin-top:15px;">
+        Add songs to your favorites to see them here.
+    </p>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}
