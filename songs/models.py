@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 
 
 class Song(models.Model):
@@ -7,8 +8,14 @@ class Song(models.Model):
     artist = models.CharField(max_length=200)
     album = models.CharField(max_length=200)
 
-    audio_file = models.FileField(upload_to="songs/")
-    cover_image = models.ImageField(upload_to="covers/")
+    # Store the MP3 and cover image in Cloudinary
+    audio_file = CloudinaryField(
+        resource_type="video"
+    )
+
+    cover_image = CloudinaryField(
+        "image"
+    )
 
     created_at = models.DateTimeField(auto_now_add=True)
 
